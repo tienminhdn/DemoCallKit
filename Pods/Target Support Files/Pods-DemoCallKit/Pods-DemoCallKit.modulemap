@@ -1,0 +1,6 @@
+framework module Pods_DemoCallKit {
+  umbrella header "Pods-DemoCallKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

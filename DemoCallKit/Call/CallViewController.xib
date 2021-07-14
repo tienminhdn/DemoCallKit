@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CallViewController" customModule="DemoCallKit" customModuleProvider="target">
+            <connections>
+                <outlet property="endCallButton" destination="iBN-9e-eF1" id="Uon-Po-p3y"/>
+                <outlet property="localView" destination="Gxs-hC-JR7" id="GMt-Q4-O4o"/>
+                <outlet property="remoteView" destination="dsN-lg-NCE" id="mVK-TJ-YMQ"/>
+                <outlet property="switchCameraButton" destination="A58-H0-gkm" id="rGM-Nj-So1"/>
+                <outlet property="videoButton" destination="NRE-fJ-2LP" id="JbS-P0-IeG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="voiceButton" destination="ozI-Q2-H6F" id="JvO-Gf-f0B"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsN-lg-NCE" userLabel="RemoteView" customClass="SKWVideo">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxs-hC-JR7" customClass="SKWVideo">
+                            <rect key="frame" x="223.5" y="70" width="165.5" height="220"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="220" id="ke7-MA-CNQ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray2Color"/>
+                    <constraints>
+                        <constraint firstItem="Gxs-hC-JR7" firstAttribute="width" secondItem="dsN-lg-NCE" secondAttribute="width" multiplier="0.4" id="3eF-4o-bxW"/>
+                        <constraint firstItem="Gxs-hC-JR7" firstAttribute="top" secondItem="dsN-lg-NCE" secondAttribute="top" constant="70" id="4ZC-Xh-0GF"/>
+                        <constraint firstAttribute="trailing" secondItem="Gxs-hC-JR7" secondAttribute="trailing" constant="25" id="6Sh-xR-bPK"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoZ-vk-pSd">
+                    <rect key="frame" x="31" y="692" width="352" height="70"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iea-2J-eJf">
+                            <rect key="frame" x="0.0" y="0.0" width="352" height="70"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A58-H0-gkm">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="70"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="arrow.triangle.2.circlepath.camera" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="switchCamButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="XN0-AW-8qx"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozI-Q2-H6F">
+                                    <rect key="frame" x="90.5" y="0.0" width="80.5" height="70"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="mic.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="voiceButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="oAP-6t-hBP"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRE-fJ-2LP">
+                                    <rect key="frame" x="181" y="0.0" width="80.5" height="70"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="video.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="camButtonTouchInside:" destination="-1" eventType="touchUpInside" id="Gfj-54-oLs"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBN-9e-eF1">
+                                    <rect key="frame" x="271.5" y="0.0" width="80.5" height="70"/>
+                                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="phone.down.fill" catalog="system" symbolScale="large" renderingMode="template"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="endCallButtonTouchUpInside:" destination="-1" eventType="touchUpInside" id="Pkd-Mg-Jtb"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="iea-2J-eJf" secondAttribute="bottom" id="DxJ-8l-gut"/>
+                        <constraint firstAttribute="trailing" secondItem="iea-2J-eJf" secondAttribute="trailing" id="NUT-Ve-1bP"/>
+                        <constraint firstItem="iea-2J-eJf" firstAttribute="leading" secondItem="VoZ-vk-pSd" secondAttribute="leading" id="TFU-7V-6eI"/>
+                        <constraint firstItem="iea-2J-eJf" firstAttribute="top" secondItem="VoZ-vk-pSd" secondAttribute="top" id="U2o-mJ-Pga"/>
+                        <constraint firstAttribute="height" constant="70" id="UZM-JC-L6E"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VoZ-vk-pSd" secondAttribute="bottom" constant="100" id="5Pg-uJ-mZh"/>
+                <constraint firstItem="dsN-lg-NCE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="E30-Sn-hqp"/>
+                <constraint firstItem="VoZ-vk-pSd" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.85" id="JCb-hx-8wO"/>
+                <constraint firstItem="VoZ-vk-pSd" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fbv-8R-PJj"/>
+                <constraint firstAttribute="bottom" secondItem="dsN-lg-NCE" secondAttribute="bottom" id="pKn-8u-bR9"/>
+                <constraint firstItem="dsN-lg-NCE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tR8-3g-LYN"/>
+                <constraint firstItem="dsN-lg-NCE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uNw-48-Sxa"/>
+            </constraints>
+            <point key="canvasLocation" x="18.840579710144929" y="85.714285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.triangle.2.circlepath.camera" catalog="system" width="128" height="94"/>
+        <image name="mic.fill" catalog="system" width="108" height="128"/>
+        <image name="phone.down.fill" catalog="system" width="128" height="52"/>
+        <image name="video.fill" catalog="system" width="128" height="82"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
