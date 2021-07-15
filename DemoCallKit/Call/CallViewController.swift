@@ -25,7 +25,14 @@ class CallViewController: UIViewController {
     @IBOutlet private weak var videoButton: UIButton!
     @IBOutlet private weak var voiceButton: UIButton!
     @IBOutlet private weak var switchCameraButton: UIButton!
-    
+    @IBOutlet private weak var switchView: UIView!
+    @IBOutlet private weak var voiceView: UIView!
+    @IBOutlet private weak var camView: UIView!
+    @IBOutlet private weak var endCallView: UIView!
+    @IBOutlet private weak var endCallImage: UIImageView!
+    @IBOutlet private weak var videoImagw: UIImageView!
+    @IBOutlet private weak var micImage: UIImageView!
+    @IBOutlet private weak var switchImage: UIImageView!
     
     // MARK: - Peroperties
     var peerID: String?
@@ -56,10 +63,10 @@ class CallViewController: UIViewController {
     
     // MARK: - Private func
     private func configUI() {
-        switchCameraButton.layer.cornerRadius = switchCameraButton.frame.height / 2
-        videoButton.layer.cornerRadius = switchCameraButton.frame.height / 2
-        voiceButton.layer.cornerRadius = switchCameraButton.frame.height / 2
-        endCallButton.layer.cornerRadius = switchCameraButton.frame.height / 2
+        switchView.layer.cornerRadius = switchCameraButton.frame.height / 2
+        voiceView.layer.cornerRadius = switchCameraButton.frame.height / 2
+        camView.layer.cornerRadius = switchCameraButton.frame.height / 2
+        endCallView.layer.cornerRadius = switchCameraButton.frame.height / 2
         localView.layer.cornerRadius = 15
         localView.layer.borderWidth = 2
         localView.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -67,11 +74,10 @@ class CallViewController: UIViewController {
     }
     
     private func handleIconImage(name: String) -> UIImage? {
-        let largeConfig = UIImage.SymbolConfiguration(scale: .large)
-        let largeBoldDoc = UIImage(systemName: name, withConfiguration: largeConfig)
-        return largeBoldDoc
+        return UIImage(systemName: name)
     }
     
+    // chuyển đổi cam
     private func handleSwitchCamera() {
         if localStream == nil { return }
         var pos = localStream?.getCameraPosition()
@@ -87,42 +93,45 @@ class CallViewController: UIViewController {
     // MARK: - IBActions
     @IBAction private func switchCamButtonTouchUpInside(_ sender: UIButton) {
         // switch camera
-        switchCameraButton.tintColor = .black
+        switchImage.tintColor = .black
         if !isSwitchCamera {
             isSwitchCamera = true
-            switchCameraButton.setImage(handleIconImage(name: "arrow.triangle.2.circlepath.camera.fill"), for: .normal)
+            switchImage.image = handleIconImage(name: "arrow.triangle.2.circlepath.camera.fill")
             handleSwitchCamera()
         } else {
             isSwitchCamera = false
-            switchCameraButton.setImage(handleIconImage(name: "arrow.triangle.2.circlepath.camera"), for: .normal)
+            switchImage.image = handleIconImage(name: "arrow.triangle.2.circlepath.camera")
             handleSwitchCamera()
         }
     }
     
     @IBAction private func voiceButtonTouchUpInside(_ sender: UIButton) {
-        // enable voice
-        voiceButton.tintColor = .black
+        micImage.tintColor = .black
         if !isChangeVoice {
             isChangeVoice = true
+            // handle enable voice
             localStream?.setEnableAudioTrack(0, enable: false)
-            voiceButton.setImage(self.handleIconImage(name: "mic.slash.fill"), for: .normal)
+            micImage.image = handleIconImage(name: "mic.slash.fill")
+            print("Mute voice")
         } else {
             isChangeVoice = false
             localStream?.setEnableAudioTrack(0, enable: true)
-            voiceButton.setImage(self.handleIconImage(name: "mic.fill"), for: .normal)
+            micImage.image = handleIconImage(name: "mic.fill")
         }
     }
     
     @IBAction private func camButtonTouchInside(_ sender: UIButton) {
         // open camera
-        videoButton.tintColor = .black
+        videoImagw.tintColor = .black
         if !isChangVideoCall {
             isChangVideoCall = true
-            videoButton.setImage(handleIconImage(name: "video.slash.fill"), for: .normal)
+            videoImagw.image = handleIconImage(name: "video.slash.fill")
+            // remove localstream
             localStream?.removeVideoRenderer(localView, track: 0)
+            print("remove cam")
         } else {
             isChangVideoCall = false
-            videoButton.setImage(handleIconImage(name: "video.fill"), for: .normal)
+            videoImagw.image = handleIconImage(name: "video.fill")
             localStream?.addVideoRenderer(localView, track: 0)
         }
     }
@@ -254,9 +263,6 @@ extension CallViewController {
         
         peer.on(SKWPeerEventEnum.PEER_EVENT_OPEN) { obj in
             if let peerId = obj as? String{
-                DispatchQueue.main.async {
-                    //
-                }
                 print("your peerId: \(peerId)")
             }
         }
